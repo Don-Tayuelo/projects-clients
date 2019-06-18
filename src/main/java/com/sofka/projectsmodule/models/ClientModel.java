@@ -9,21 +9,20 @@ public class ClientModel {
 	private int idClient;
 	private String nameClient;
 	private String productOwner;
-	private ArrayList<ProjectModel> projects;
+	private ArrayList<ProjectModel> listProjects;
 
-	
-	public ClientModel(int idClient, String nameClient, String productOwner, ArrayList<ProjectModel> projects) {
+	public ClientModel(int idClient, String nameClient, String productOwner, ArrayList<ProjectModel> listProjects) {
 		this.idClient = idClient;
 		this.nameClient = nameClient;
 		this.productOwner = productOwner;
-		this.projects = projects;
+		this.listProjects = listProjects;
 	}
 
-	public int getidClient() {
+	public int getIdClient() {
 		return idClient;
 	}
 
-	public void setidClient(int idClient) {
+	public void setIdClient(int idClient) {
 		this.idClient = idClient;
 	}
 
@@ -31,8 +30,8 @@ public class ClientModel {
 		return nameClient;
 	}
 
-	public void setName(String name) {
-		this.nameClient = name;
+	public void setNameClient(String nameClient) {
+		this.nameClient = nameClient;
 	}
 
 	public String getProductOwner() {
@@ -43,11 +42,11 @@ public class ClientModel {
 		this.productOwner = productOwner;
 	}
 
-	public ArrayList<ProjectModel> getProjects() {
-		return projects;
+	public ArrayList<ProjectModel> getListProjects() {
+		return listProjects;
 	}
 
-	public void setProjects(ArrayList<ProjectModel> projects) {
-		this.projects = projects;
+	public void setListProjects(ArrayList<ProjectModel> listProjects) {
+		this.listProjects = listProjects;
 	}
 }
