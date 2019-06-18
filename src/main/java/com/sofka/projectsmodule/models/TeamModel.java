@@ -5,8 +5,10 @@ import java.util.ArrayList;
 import org.springframework.data.annotation.Id;
 
 public class TeamModel {
+	
 	@Id
 	private String idTeam;
+	
 	private ArrayList<Sofkiano> listSofkiano;
 	
 	public TeamModel(String idTeam , ArrayList<Sofkiano> listSofkiano) {

@@ -7,13 +7,14 @@ import org.springframework.data.annotation.Id;
 public class ClientModel {
 	@Id
 	private int idClient;
-	private String nameClient;
+	
+	private String clientName;
 	private String productOwner;
 	private ArrayList<ProjectModel> listProjects;
 
 	public ClientModel(int idClient, String nameClient, String productOwner, ArrayList<ProjectModel> listProjects) {
 		this.idClient = idClient;
-		this.nameClient = nameClient;
+		this.clientName = nameClient;
 		this.productOwner = productOwner;
 		this.listProjects = listProjects;
 	}
@@ -27,11 +28,11 @@ public class ClientModel {
 	}
 
 	public String getNameClient() {
-		return nameClient;
+		return clientName;
 	}
 
 	public void setNameClient(String nameClient) {
-		this.nameClient = nameClient;
+		this.clientName = nameClient;
 	}
 
 	public String getProductOwner() {

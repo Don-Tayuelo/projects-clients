@@ -6,8 +6,11 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,9 +29,14 @@ public class ProjectsController {
 	
 	@GetMapping
 	public List<ProjectModel> getProjects(){
-		return projectsRepository.findAll();
+		return projectsRepository.getProjects();
 	}
 	 
+	@GetMapping("/{nameProject}")
+	public ProjectModel getProjectByName(@RequestParam String nameProject){
+		return projectsRepository.findByName(nameProject);
+	}
+	
 	@GetMapping
 	public ProjectModel getProject(@RequestParam String nameProject){
 		return projectsRepository.findByName(nameProject);
@@ -36,7 +44,19 @@ public class ProjectsController {
 	
 	@PostMapping
 	public void addProject(@Valid @RequestBody ProjectModel projectModel) {
-		projectsRepository.save(projectModel);
+		projectsRepository.addProject(projectModel);;
+	}
+	
+	@PostMapping("")
+	
+	@PutMapping("/edit/{_id}")
+	public void putProject(@PathVariable(value = "_id") String _id, @Valid @RequestBody ProjectModel projectModel) {
+		projectsRepository.putProject(_id, projectModel);
+	}
+	
+	@DeleteMapping("/delete/{_id}")
+	public void deleteProject(@RequestParam String _id) {
+		projectsRepository.deleteProject(_id);
 	}
 }
 

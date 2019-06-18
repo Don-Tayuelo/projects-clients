@@ -2,77 +2,92 @@ package com.sofka.projectsmodule.models;
 
 import java.util.ArrayList;
 import org.springframework.data.annotation.Id;
-import com.sofka.projectsmodule.repository.ClientsRepository;
+
 
 public class ProjectModel {
+	
 	@Id
+	private String idProject;
+	
+	private String projectName;
+	private String projectDescription;
+	private double projectHours;
+	private double projectPrice;
+	private String clientName;
 	private String idClient;
-	private String nameProject;
-	private String description;
-	private double hours;
-	private double price;
-	private ClientsRepository client;
 	private ArrayList<TeamModel> listTeams;
 	
-	public ProjectModel(String idClient , String nameProject , String description , double hours , double price , ClientsRepository client , ArrayList<TeamModel> listTeams) {
+	public ProjectModel(String idClient , String nameProject , String projectDescription , double projectHours , double projectPrice , String clientName , ArrayList<TeamModel> listTeams) {
 		this.idClient = idClient;
-		this.nameProject = nameProject;
-		this.description = description;
-		this.hours = hours;
-		this.price = price;
-		this.client = client;
+		this.projectName = nameProject;
+		this.projectDescription = projectDescription;
+		this.projectHours = projectHours;
+		this.projectPrice = projectPrice;
+		this.clientName = clientName;
 		this.listTeams = listTeams;
 	}
-	
+
+	public String getIdProject() {
+		return idProject;
+	}
+
+	public void setIdProject(String idProject) {
+		this.idProject = idProject;
+	}
+
+	public String getProjectName() {
+		return projectName;
+	}
+
+	public void setProjectName(String projectName) {
+		this.projectName = projectName;
+	}
+
+	public String getProjectDescription() {
+		return projectDescription;
+	}
+
+	public void setProjectDescription(String projectDescription) {
+		this.projectDescription = projectDescription;
+	}
+
+	public double getProjectHours() {
+		return projectHours;
+	}
+
+	public void setProjectHours(double projectHours) {
+		this.projectHours = projectHours;
+	}
+
+	public double getProjectPrice() {
+		return projectPrice;
+	}
+
+	public void setProjectPrice(double projectPrice) {
+		this.projectPrice = projectPrice;
+	}
+
+	public String getClientName() {
+		return clientName;
+	}
+
+	public void setClientName(String clientName) {
+		this.clientName = clientName;
+	}
+
 	public String getIdClient() {
 		return idClient;
 	}
-	
-	public void setidClient(String idClient) {
+
+	public void setIdClient(String idClient) {
 		this.idClient = idClient;
 	}
-	
-	public String getNameProject() {
-		return nameProject;
-	}
-	
-	public void setNameProject(String nameProject) {
-		this.nameProject = nameProject;
-	}
-	
-	public String getDescription() {
-		return description;
-	}
-	
-	public void setDescription(String description) {
-		this.description = description;
-	}
-	
-	public double getHours() {
-		return hours;
-	}
-	
-	public void setHours(double hours) {
-		this.hours = hours;
-	}
-	
-	public double getPrice() {
-		return price;
-	}
-	
-	public void setPrice(double price) {
-		this.price = price;
-	}
-	
+
 	public ArrayList<TeamModel> getListTeams() {
 		return listTeams;
 	}
-	
+
 	public void setListTeams(ArrayList<TeamModel> listTeams) {
 		this.listTeams = listTeams;
-	}
-
-	public String getNameClient() {
-		return client.findById(idClient).get().getNameClient();
 	}
 }
