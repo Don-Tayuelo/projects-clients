@@ -1,15 +1,14 @@
-package com.sofka.projectsmodule.repository;
+package com.sofka.projectsmodule.persistencia.servicios;
 
 import java.util.List;
+import java.util.Optional;
 
-import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.stereotype.Repository;
-
+import org.springframework.stereotype.Service;
 
 import com.sofka.projectsmodule.models.ProjectModel;
 
-@Repository
-public interface ProjectsRepository extends MongoRepository<ProjectModel, String>{
+@Service
+public interface ProjectsRepository {
 
 	public void addProject(ProjectModel projectModel);
 	
@@ -17,7 +16,7 @@ public interface ProjectsRepository extends MongoRepository<ProjectModel, String
 	
 	public List<ProjectModel> getProjects();
 	
-	public ProjectModel getProject();
+	public Optional<ProjectModel> getProject(String _id);
 	
 	public void putProject(String _id, ProjectModel projectModel);
 	

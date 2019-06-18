@@ -1,11 +1,17 @@
 package com.sofka.projectsmodule.models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import org.springframework.data.annotation.Id;
 
 
-public class ProjectModel {
+public class ProjectModel implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	private String idProject;
 	
@@ -15,16 +21,19 @@ public class ProjectModel {
 	private double projectPrice;
 	private String clientName;
 	private String idClient;
-	private ArrayList<TeamModel> listTeams;
+	private ArrayList<Sofkiano> teamList;
 	
-	public ProjectModel(String idClient , String nameProject , String projectDescription , double projectHours , double projectPrice , String clientName , ArrayList<TeamModel> listTeams) {
+	public ProjectModel() {}
+	
+	public ProjectModel(String idClient , String nameProject , String projectDescription , double projectHours 
+			, double projectPrice , String clientName , ArrayList<Sofkiano> teamList) {
 		this.idClient = idClient;
 		this.projectName = nameProject;
 		this.projectDescription = projectDescription;
 		this.projectHours = projectHours;
 		this.projectPrice = projectPrice;
 		this.clientName = clientName;
-		this.listTeams = listTeams;
+		this.teamList = teamList;
 	}
 
 	public String getIdProject() {
@@ -83,11 +92,11 @@ public class ProjectModel {
 		this.idClient = idClient;
 	}
 
-	public ArrayList<TeamModel> getListTeams() {
-		return listTeams;
+	public ArrayList<Sofkiano> getListTeams() {
+		return teamList;
 	}
 
-	public void setListTeams(ArrayList<TeamModel> listTeams) {
-		this.listTeams = listTeams;
+	public void setListTeams(ArrayList<Sofkiano> listTeams) {
+		this.teamList = listTeams;
 	}
 }

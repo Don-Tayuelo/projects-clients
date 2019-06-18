@@ -1,15 +1,24 @@
 package com.sofka.projectsmodule.models;
 
+import java.io.Serializable;
+
 import org.springframework.data.annotation.Id;
 
-public class Sofkiano {
+public class Sofkiano implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	private String idSofkiano;
 	
 	private String sofkianoName;
 	private String sofkianoCharge;
 	private String[] arraySkills;
+	
+	public Sofkiano() {}
 	
 	public Sofkiano(String idSofkiano , String sofkianoName , String sofkianoCharge , String[] arraySkills) {
 		this.idSofkiano = idSofkiano;

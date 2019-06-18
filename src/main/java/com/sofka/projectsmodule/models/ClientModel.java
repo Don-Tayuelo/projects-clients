@@ -1,10 +1,16 @@
 package com.sofka.projectsmodule.models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import org.springframework.data.annotation.Id;
 
-public class ClientModel {
+public class ClientModel implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	private int idClient;
 	

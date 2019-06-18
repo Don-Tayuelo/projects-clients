@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sofka.projectsmodule.models.ProjectModel;
-import com.sofka.projectsmodule.repository.ProjectsRepository;
+import com.sofka.projectsmodule.persistencia.servicios.ProjectsRepository;
 
 @CrossOrigin
 @RestController
@@ -37,24 +37,27 @@ public class ProjectsController {
 		return projectsRepository.findByName(nameProject);
 	}
 	
-	@GetMapping
+	@GetMapping("/names")
 	public ProjectModel getProject(@RequestParam String nameProject){
 		return projectsRepository.findByName(nameProject);
 	}
 	
 	@PostMapping
 	public void addProject(@Valid @RequestBody ProjectModel projectModel) {
-		projectsRepository.addProject(projectModel);;
+		projectsRepository.addProject(projectModel);
 	}
 	
-	@PostMapping("")
+	/*
+	@PostMapping("/projects/team")
+	public void add
+	*/
 	
 	@PutMapping("/edit/{_id}")
 	public void putProject(@PathVariable(value = "_id") String _id, @Valid @RequestBody ProjectModel projectModel) {
 		projectsRepository.putProject(_id, projectModel);
 	}
 	
-	@DeleteMapping("/delete/{_id}")
+	@DeleteMapping("/delete")
 	public void deleteProject(@RequestParam String _id) {
 		projectsRepository.deleteProject(_id);
 	}
