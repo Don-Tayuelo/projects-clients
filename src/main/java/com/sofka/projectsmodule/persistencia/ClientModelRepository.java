@@ -9,5 +9,6 @@ import com.sofka.projectsmodule.models.ClientModel;
 
 @Repository
 public interface ClientModelRepository extends MongoRepository<ClientModel, Serializable> {
-
+		
+	
 }
