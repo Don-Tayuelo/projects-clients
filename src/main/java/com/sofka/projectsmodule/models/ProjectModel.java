@@ -3,19 +3,20 @@ package com.sofka.projectsmodule.models;
 import java.io.Serializable;
 import java.util.ArrayList;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document(collection = "projects")
+public class ProjectModel implements Serializable {
 
-public class ProjectModel implements Serializable{
-	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	private String idProject;
 	
+	@Indexed(unique = true)
 	private String projectName;
+	
 	private String projectDescription;
 	private double projectHours;
 	private double projectPrice;
