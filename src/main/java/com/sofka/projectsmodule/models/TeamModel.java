@@ -14,9 +14,7 @@ public class TeamModel implements Serializable{
 
 	@Id
 	private String idTeam;
-	
-	private ArrayList<Sofkiano> listSofkiano;
-	
+	private ArrayList<Sofkiano> listSofkiano;	
 	public TeamModel() {}
 	
 	public TeamModel(String idTeam , ArrayList<Sofkiano> listSofkiano) {

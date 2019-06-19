@@ -7,5 +7,6 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import com.sofka.projectsmodule.models.ClientModel;
 
 public interface ClientModelRepository extends MongoRepository<ClientModel, Serializable> {
-
+		
+	
 }
