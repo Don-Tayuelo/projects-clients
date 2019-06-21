@@ -3,13 +3,13 @@ package com.sofka.projectsmodule.models;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+
+
 import org.springframework.data.annotation.Id;
 
 public class ClientModel implements Serializable{
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -19,9 +19,11 @@ public class ClientModel implements Serializable{
 	private String productOwner;
 	private ArrayList<Object> listProjects;
 	
-	public ClientModel() {
-		
-	}
+
+    public ClientModel() {
+    	
+    }
+
 
 	public ClientModel(String id, String clientName, String productOwner, ArrayList<Object> listProjects) {
 		this.idClient = id;

@@ -2,14 +2,15 @@ package com.sofka.projectsmodule.models;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+
+
 import org.springframework.data.annotation.Id;
 
 
 public class ProjectModel implements Serializable{
+
 	
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 
 	@Id

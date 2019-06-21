@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sofka.projectsmodule.models.ProjectModel;
-import com.sofka.projectsmodule.persistencia.servicios.ProjectsRepository;
+import com.sofka.projectsmodule.persistencia.servicios.ProjectsService;
 
 @CrossOrigin
 @RestController
@@ -25,7 +25,7 @@ import com.sofka.projectsmodule.persistencia.servicios.ProjectsRepository;
 public class ProjectsController {
 
 	@Autowired
-	private ProjectsRepository projectsRepository;
+	private ProjectsService projectsRepository;
 	
 	@GetMapping
 	public List<ProjectModel> getProjects(){

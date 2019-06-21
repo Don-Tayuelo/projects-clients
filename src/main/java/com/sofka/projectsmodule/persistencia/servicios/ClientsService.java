@@ -10,16 +10,19 @@ import com.sofka.projectsmodule.models.ProjectModel;
 
 
 @Service
-public interface ClientsRepository {
+public interface ClientsService {
 	
 	public void addClient(ClientModel cliente); 
 	
-	public List<ClientModel> getClients(); // listar
+	public List<ClientModel> getClients(); 
+	
+	public List<ClientModel> findByClientName(String clientName);
 	
 	public  void deleteClient(String _id); //deleteForId
 	
 	public void deleteClients(ClientModel cliente);
 	
+	public Optional<ClientModel> findById(String idClient);
 	
 	
 	

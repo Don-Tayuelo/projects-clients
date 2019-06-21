@@ -1,6 +1,7 @@
 package com.sofka.projectsmodule.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -18,7 +19,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sofka.projectsmodule.models.ClientModel;
-import com.sofka.projectsmodule.persistencia.servicios.ClientsRepository;
+import com.sofka.projectsmodule.persistencia.servicios.ClientsService;
+
 
 @CrossOrigin
 @RestController
@@ -26,13 +28,26 @@ import com.sofka.projectsmodule.persistencia.servicios.ClientsRepository;
 public class ClientsController {
 	
 	@Autowired
-	private ClientsRepository clientRepository;
+	private ClientsService clientRepository;
 	
 	
 	@GetMapping
 	public List<ClientModel> getClients(){ 
 		return clientRepository.getClients();
 	}
+	
+	
+	@GetMapping("/find/{idClient}")
+	public Optional<ClientModel> findById(@PathVariable("idClient") String idClient){ 
+		return clientRepository.findById(idClient);
+	}
+	
+	
+	@GetMapping("/search")
+	public List<ClientModel> findByName(@RequestParam("name") String clientName){	
+		return clientRepository.findByClientName(clientName);
+	}
+	
 		
 	@PostMapping
 	public String addClient(@RequestBody ClientModel clientModel) { 
@@ -58,7 +73,9 @@ public class ClientsController {
 	public String  deleteClients(ClientModel client) {
 		clientRepository.deleteClients(client);
 		return "Clientes Eliminados";
-		
 	}
 	
 }
+	
+	
+

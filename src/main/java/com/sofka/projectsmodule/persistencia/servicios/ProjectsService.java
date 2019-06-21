@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.sofka.projectsmodule.models.ProjectModel;
 
 @Service
-public interface ProjectsRepository {
+public interface ProjectsService {
 
 	public void addProject(ProjectModel projectModel);
 	

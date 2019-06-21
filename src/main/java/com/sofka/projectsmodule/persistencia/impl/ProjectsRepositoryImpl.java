@@ -8,10 +8,10 @@ import org.springframework.stereotype.Service;
 
 import com.sofka.projectsmodule.models.ProjectModel;
 import com.sofka.projectsmodule.persistencia.ProjectModelRepository;
-import com.sofka.projectsmodule.persistencia.servicios.ProjectsRepository;
+import com.sofka.projectsmodule.persistencia.servicios.ProjectsService;
 
 @Service
-public class ProjectsRepositoryImpl implements ProjectsRepository{
+public class ProjectsRepositoryImpl implements ProjectsService{
 	
 	@Autowired
 	private ProjectModelRepository projectsRepository;

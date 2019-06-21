@@ -8,10 +8,10 @@ import org.springframework.stereotype.Service;
 
 import com.sofka.projectsmodule.models.ClientModel;
 import com.sofka.projectsmodule.persistencia.ClientModelRepository;
-import com.sofka.projectsmodule.persistencia.servicios.ClientsRepository;
+import com.sofka.projectsmodule.persistencia.servicios.ClientsService;
 
 @Service
-public class ClientsRepositoryImpl implements ClientsRepository {
+public class ClientsRepositoryImpl implements ClientsService {
 	
 	@Autowired
 	private ClientModelRepository clientRepository;
@@ -20,7 +20,7 @@ public class ClientsRepositoryImpl implements ClientsRepository {
 	public List<ClientModel> getClients() {
 		return clientRepository.findAll();
 	}
-
+	
 	@Override
 	public void addClient(ClientModel cliente) {
 		clientRepository.save(cliente);	
@@ -36,5 +36,17 @@ public class ClientsRepositoryImpl implements ClientsRepository {
 	public void deleteClients(ClientModel cliente) {
 	   clientRepository.deleteAll();
 		}
+
+	
+	@Override
+	public List<ClientModel> findByClientName(String clientName) {
+	    return clientRepository.findByClientName(clientName);
+	}
+
+
+	@Override
+	public Optional<ClientModel> findById(String idClient) {
+		return clientRepository.findById(idClient);
+	}
 
 }
