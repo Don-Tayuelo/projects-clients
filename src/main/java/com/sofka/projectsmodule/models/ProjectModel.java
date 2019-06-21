@@ -5,18 +5,27 @@ import java.util.ArrayList;
 
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document(collection = "projects")
+public class ProjectModel implements Serializable {
 
+<<<<<<< HEAD
 public class ProjectModel implements Serializable{
 
 	
 	
+=======
+>>>>>>> 6a4c3091f52eb31cf90427558a0169a9b059b9e3
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	private String idProject;
 	
+	@Indexed(unique = true)
 	private String projectName;
+	
 	private String projectDescription;
 	private double projectHours;
 	private double projectPrice;
