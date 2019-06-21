@@ -15,18 +15,21 @@ public class ClientModel implements Serializable{
 	@Id
 	private String idClient;
 	
-	private String clientName;
+	private String customerName;
 	private String productOwner;
+	private String customerCity;
+
 	private ArrayList<Object> listProjects;
 	
 	public ClientModel() {
 		
 	}
 
-	public ClientModel(String id, String clientName, String productOwner, ArrayList<Object> listProjects) {
+	public ClientModel(String id, String clientName, String productOwner, String customerCity, ArrayList<Object> listProjects) {
 		this.idClient = id;
-		this.clientName = clientName;
+		this.customerName = clientName;
 		this.productOwner = productOwner;
+		this.customerCity = customerCity;
 		this.listProjects = listProjects;
 	}
 
@@ -38,12 +41,12 @@ public class ClientModel implements Serializable{
 		this.idClient = idClient;
 	}
 
-	public String getClientName() {
-		return clientName;
+	public String getCustomerName() {
+		return customerName;
 	}
 
-	public void setClientName(String clientName) {
-		this.clientName = clientName;
+	public void setCustomerName(String customerName) {
+		this.customerName = customerName;
 	}
 
 	public String getProductOwner() {
@@ -60,5 +63,13 @@ public class ClientModel implements Serializable{
 
 	public void setListProjects(ArrayList<Object> listProjects) {
 		this.listProjects = listProjects;
+	}
+	
+	public String getCustomerCity() {
+		return customerCity;
+	}
+
+	public void setCustomerCity(String customerCity) {
+		this.customerCity = customerCity;
 	}
 }

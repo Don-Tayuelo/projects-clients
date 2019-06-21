@@ -1,7 +1,6 @@
 package com.sofka.projectsmodule.exceptionsHandler.excepciones;
 
-public class InvalidProjectException extends RuntimeException {
+public class InvalidRequestBodyException extends RuntimeException {
 
 	private static final long serialVersionUID = 1L;
-
 }
