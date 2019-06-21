@@ -1,6 +1,8 @@
 package com.sofka.projectsmodule.persistencia.impl;
 
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.sofka.projectsmodule.models.ClientModel;
@@ -11,7 +13,6 @@ import com.sofka.projectsmodule.persistencia.servicios.ClientsService;
 public class ClientsRepositoryImpl implements ClientsService {
 
 	@Autowired  
-	
 	private ClientModelRepository clientRepository;
 
 	@Override
@@ -33,5 +34,15 @@ public class ClientsRepositoryImpl implements ClientsService {
 	@Override
 	public void deleteClients(ClientModel cliente) {
 		clientRepository.deleteAll();
+	}
+	
+	@Override
+    public Optional<ClientModel> findById(String idClient) {
+        return clientRepository.findById(idClient);
+    }
+
+	@Override
+	public List<ClientModel> findByClientName(String clientName) {
+		return clientRepository.findByClientName(clientName);
 	}
 }

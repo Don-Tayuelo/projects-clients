@@ -1,6 +1,8 @@
 package com.sofka.projectsmodule.persistencia.servicios;
 
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 import com.sofka.projectsmodule.models.ClientModel;
 
@@ -14,4 +16,8 @@ public interface ClientsService {
 	public void deleteClient(String _id);
 
 	public void deleteClients(ClientModel cliente);
+	
+	public Optional<ClientModel> findById(String idClient);
+	
+	public List<ClientModel> findByClientName(String clientName);
 }
