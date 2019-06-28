@@ -1,9 +1,8 @@
 package com.sofka.projectsmodule.models;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
-
+import java.util.List;
 
 import org.springframework.data.annotation.Id;
 
@@ -14,22 +13,20 @@ public class ClientModel implements Serializable{
 
 	@Id
 	private String idClient;
-	
 	private String clientName;
 	private String productOwner;
-	private ArrayList<Object> listProjects;
+	private List<ProjectModel> listProjects;
 	
+	public ClientModel() {
+		
+	}
+    
 
-    public ClientModel() {
-    	
-    }
-
-
-	public ClientModel(String id, String clientName, String productOwner, ArrayList<Object> listProjects) {
+	public ClientModel(String id, String clientName, String productOwner ,List<ProjectModel> listProjects) {
 		this.idClient = id;
 		this.clientName = clientName;
 		this.productOwner = productOwner;
-		this.listProjects = listProjects;
+	    this.listProjects = listProjects;
 	}
 
 	public String getIdClient() {
@@ -56,11 +53,11 @@ public class ClientModel implements Serializable{
 		this.productOwner = productOwner;
 	}
 
-	public ArrayList<Object> getListProjects() {
+	public List<ProjectModel> getListProjects() {
 		return listProjects;
 	}
 
-	public void setListProjects(ArrayList<Object> listProjects) {
+	public void setListProjects(List<ProjectModel> listProjects) {
 		this.listProjects = listProjects;
 	}
 }

@@ -21,16 +21,12 @@ import com.sofka.projectsmodule.persistencia.servicios.ProjectsService;
 @RestController
 @RequestMapping("/projects")
 public class ProjectsController {
-
-<<<<<<< HEAD
-	@Autowired
-	private ProjectsService projectsRepository;
 	
-=======
-	@Autowired(required = true)
-	private ProjectsRepository projectsRepository;
 
->>>>>>> 6a4c3091f52eb31cf90427558a0169a9b059b9e3
+	@Autowired(required = true)
+	private ProjectsService projectsRepository;
+
+
 	@GetMapping
 	public List<ProjectModel> getProjects() {
 		return projectsRepository.getProjects();

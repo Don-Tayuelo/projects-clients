@@ -25,11 +25,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-<<<<<<< HEAD
-	compile group: 'org.hibernate.javax.persistence', name: 'hibernate-jpa-2.0-api', version: '1.0.0.Final'
-=======
 	// https://mvnrepository.com/artifact/org.mongodb/mongo-java-driver
     compile group: 'org.mongodb', name: 'mongo-java-driver', version: '3.10.2'
->>>>>>> 6a4c3091f52eb31cf90427558a0169a9b059b9e3
 	
 }

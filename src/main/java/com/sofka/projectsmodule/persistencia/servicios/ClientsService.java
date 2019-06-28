@@ -6,21 +6,22 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.sofka.projectsmodule.models.ClientModel;
-import com.sofka.projectsmodule.models.ProjectModel;
 
 
+ 
 @Service
 public interface ClientsService {
 	
-	public void addClient(ClientModel cliente); 
 	
 	public List<ClientModel> getClients(); 
 	
+	public ClientModel addClient(ClientModel cliente); 
+	
 	public List<ClientModel> findByClientName(String clientName);
 	
-	public  void deleteClient(String _id); //deleteForId
+	public  void deleteClient(String _id); 
 	
-	public void deleteClients(ClientModel cliente);
+	public void deleteClients();
 	
 	public Optional<ClientModel> findById(String idClient);
 	

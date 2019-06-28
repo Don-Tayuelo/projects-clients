@@ -13,13 +13,11 @@ import com.sofka.projectsmodule.persistencia.ProjectModelRepository;
 import com.sofka.projectsmodule.persistencia.servicios.ProjectsService;
 
 @Service
-<<<<<<< HEAD
+
 public class ProjectsRepositoryImpl implements ProjectsService{
 	
-=======
-public class ProjectsRepositoryImpl implements ProjectsRepository {
 
->>>>>>> 6a4c3091f52eb31cf90427558a0169a9b059b9e3
+
 	@Autowired
 	private ProjectModelRepository projectsRepository;
 
