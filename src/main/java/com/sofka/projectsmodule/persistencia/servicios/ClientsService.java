@@ -9,15 +9,15 @@ import com.sofka.projectsmodule.models.ClientModel;
 @Service
 public interface ClientsService {
 
-	public void addClient(ClientModel cliente);
-
 	public List<ClientModel> getClients();
 
-	public void deleteClient(String _id);
+	public ClientModel addClient(ClientModel cliente);
 
-	public void deleteClients(ClientModel cliente);
-	
-	public Optional<ClientModel> findById(String idClient);
-	
 	public List<ClientModel> findByClientName(String clientName);
+
+	public  void deleteClient(String _id);
+
+	public void deleteClients();
+
+	public Optional<ClientModel> findById(String idClient);
 }

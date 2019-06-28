@@ -34,42 +34,42 @@ import com.sofka.projectsmodule.persistencia.servicios.ProjectsService;
 public class ProjectsController {
 
 	@Autowired(required = true)
-	private ProjectsService projectsRepository;
+	private ProjectsService projectsService;
 
 	@GetMapping
 	public List<ProjectModel> getAllProjects() {
-		return projectsRepository.getAllProjects();
+		return projectsService.getAllProjects();
 	}
 
 	@GetMapping("/billing")
 	public List<CustomProjectsForBilling> getProjectsForBilling() {
-		return projectsRepository.getProjectsForBilling();
+		return projectsService.getProjectsForBilling();
 	}
 
 	@GetMapping("/{_id}")
 	public Optional<ProjectModel> getSingleProjectById(@PathVariable(value = "_id") String _id) {
-		return projectsRepository.getSingleProjectById(_id);
+		return projectsService.getSingleProjectById(_id);
 	}
 
 	@PostMapping
 	public ProjectModel addProject(@Valid @RequestBody ProjectModel projectModel) {
-		return projectsRepository.addProject(projectModel);
+		return projectsService.addProject(projectModel);
 	}
 
 	@PutMapping("/edit/{_id}")
 	public boolean putProject(@PathVariable(value = "_id") String _id,
 			@Valid @RequestBody ProjectModel projectModel) {
-		return projectsRepository.putProject(_id, projectModel);
+		return projectsService.putProject(_id, projectModel);
 	}
 
 	@DeleteMapping("/delete")
 	public boolean deleteAllProjects() {
-		return projectsRepository.deleteAllProjects();
+		return projectsService.deleteAllProjects();
 	}
 
 	@DeleteMapping("/deletesingle")
 	public boolean deleteProject(@RequestParam String _id) {
-		return projectsRepository.deleteSingleProject(_id);
+		return projectsService.deleteSingleProject(_id);
 	}
 
 	@ResponseStatus(HttpStatus.BAD_REQUEST)

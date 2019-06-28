@@ -12,17 +12,22 @@ import com.sofka.projectsmodule.persistencia.servicios.ClientsService;
 @Service
 public class ClientsRepositoryImpl implements ClientsService {
 
-	@Autowired  
-	private ClientModelRepository clientRepository;
+	@Autowired
+	private  ClientModelRepository clientRepository;
+
+
+	public ClientsRepositoryImpl(ClientModelRepository repository) {
+		this.clientRepository= repository;
+	}
 
 	@Override
-	public List<ClientModel> getClients() {
+	public  List<ClientModel> getClients() {
 		return clientRepository.findAll();
 	}
 
 	@Override
-	public void addClient(ClientModel cliente) {
-		clientRepository.save(cliente);
+	public ClientModel addClient(ClientModel cliente) {
+		return clientRepository.save(cliente);
 	}
 
 	@Override
@@ -32,17 +37,19 @@ public class ClientsRepositoryImpl implements ClientsService {
 	}
 
 	@Override
-	public void deleteClients(ClientModel cliente) {
+	public void deleteClients() {
 		clientRepository.deleteAll();
 	}
-	
-	@Override
-    public Optional<ClientModel> findById(String idClient) {
-        return clientRepository.findById(idClient);
-    }
+
 
 	@Override
 	public List<ClientModel> findByClientName(String clientName) {
 		return clientRepository.findByClientName(clientName);
+	}
+
+
+	@Override
+	public Optional<ClientModel> findById(String idClient) {
+		return clientRepository.findById(idClient);
 	}
 }
