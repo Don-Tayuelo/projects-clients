@@ -52,23 +52,23 @@ public class ProjectsController {
 	}
 
 	@PostMapping
-	public ResponseEntity<Object> addProject(@Valid @RequestBody ProjectModel projectModel) {
+	public ProjectModel addProject(@Valid @RequestBody ProjectModel projectModel) {
 		return projectsRepository.addProject(projectModel);
 	}
 
 	@PutMapping("/edit/{_id}")
-	public ResponseEntity<Object> putProject(@PathVariable(value = "_id") String _id,
+	public boolean putProject(@PathVariable(value = "_id") String _id,
 			@Valid @RequestBody ProjectModel projectModel) {
 		return projectsRepository.putProject(_id, projectModel);
 	}
 
 	@DeleteMapping("/delete")
-	public ResponseEntity<Object> deleteAllProjects() {
+	public boolean deleteAllProjects() {
 		return projectsRepository.deleteAllProjects();
 	}
 
 	@DeleteMapping("/deletesingle")
-	public ResponseEntity<Object> deleteProject(@RequestParam String _id) {
+	public boolean deleteProject(@RequestParam String _id) {
 		return projectsRepository.deleteSingleProject(_id);
 	}
 

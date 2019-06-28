@@ -22,6 +22,10 @@ public class ProjectsRepositoryImpl implements ProjectsService {
 	@Autowired
 	private ProjectModelRepository projectsRepository;
 
+	public ProjectsRepositoryImpl(ProjectModelRepository projectModelRepository) {
+		projectsRepository = projectModelRepository;
+	}
+
 	@Override
 	public List<ProjectModel> getAllProjects() {
 		if(projectsRepository.findAll().isEmpty()) throw new ProjectsCollectionEmptyException();
@@ -31,14 +35,16 @@ public class ProjectsRepositoryImpl implements ProjectsService {
 	}
 
 	@Override
-	public ResponseEntity<Object> putProject(String _id, ProjectModel projectModel) {
+	public boolean putProject(String _id, ProjectModel projectModel) {
 
 		if (!projectsRepository.existsById(_id))
-			throw new ProjectNotFoundException();
+			//throw new ProjectNotFoundException();
+			return false;
 		{
 			mapNewProject(_id, projectModel);
 		}
-		return new ResponseEntity<>("El proyecto con id \"" + _id + "\" fue actualizado.", HttpStatus.OK);
+		//return new ResponseEntity<>("El proyecto con id \"" + _id + "\" fue actualizado.", HttpStatus.OK);
+		return true;
 	}
 
 	public void mapNewProject(String _id, ProjectModel projectModel) {
@@ -56,21 +62,21 @@ public class ProjectsRepositoryImpl implements ProjectsService {
 	}
 
 	@Override
-	public ResponseEntity<Object> deleteSingleProject(String _id) {
+	public boolean deleteSingleProject(String _id) {
 		if(!projectsRepository.existsById(_id))
 			throw new ProjectNotFoundException(); 
 		{	
 			projectsRepository.deleteById(_id); 
 		}
-		return new ResponseEntity<>("El proyecto con id \""+ _id +"\" fue eliminado.", HttpStatus.OK);
+		return true;
 	}
 
 	@Override
-	public ResponseEntity<Object> addProject(ProjectModel projectModel) {
+	public ProjectModel addProject(ProjectModel projectModel) {
 		if(!validProjectBody(projectModel)) throw new InvalidRequestBodyException(); {
-			projectsRepository.save(projectModel);
+			return projectsRepository.save(projectModel);
 		}
-		return new ResponseEntity<>("Proyecto guardado con éxito.", HttpStatus.OK);
+		//return new ResponseEntity<>("Proyecto guardado con éxito.", HttpStatus.OK);
 	}
 
 	private boolean validProjectBody(ProjectModel projectModel) {
@@ -100,11 +106,11 @@ public class ProjectsRepositoryImpl implements ProjectsService {
 	}
 	
 	@Override
-	public ResponseEntity<Object> deleteAllProjects() {
+	public boolean deleteAllProjects() {
 		if(projectsRepository.findAll().isEmpty()) throw new ProjectsCollectionEmptyException();
 		{
 			projectsRepository.deleteAll();
-			return new ResponseEntity<>("Todos los proyectos han sido borrados.", HttpStatus.OK);	
+			return true;
 		}
 	}
 }

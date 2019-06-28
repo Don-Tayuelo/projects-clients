@@ -2,6 +2,7 @@ package com.sofka.projectsmodule.models;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -18,35 +19,35 @@ public class ProjectModel implements Serializable {
 	@Id
 	private String idProject;
 
-	@NotBlank(message = "El campo - projectName - no puede ser vacío.")
+	@NotBlank(message = "El campo - projectName - no puede ser vacï¿½o.")
 	@Indexed(unique = true)
 	@Size(min = 3, max = 40)
 	private String projectName;
 
-	@NotBlank(message = "El campo - projectDescription - no puede ser vacío.")
+	@NotBlank(message = "El campo - projectDescription - no puede ser vacï¿½o.")
 	private String projectDescription;
 
 	private double projectHours;
 
 	private double projectPrice;
 
-	@NotBlank(message = "El campo - clientName - no puede ser vacío.")
+	@NotBlank(message = "El campo - clientName - no puede ser vacï¿½o.")
 	private String clientName;
 
-	@NotBlank(message = "El campo - customerCity - no puede ser vacío.")
+	@NotBlank(message = "El campo - customerCity - no puede ser vacï¿½o.")
 	private String customerCity;
 
-	@NotBlank(message = "El campo - idClient - no puede ser vacío.")
+	@NotBlank(message = "El campo - idClient - no puede ser vacï¿½o.")
 	private String idClient;
 
 	@NotNull(message = "Debes asignar Sofkianos al proyecto")
-	private ArrayList<Sofkiano> teamList;
+	private List<Sofkiano> teamList;
 
 	public ProjectModel() {
 	}
 
 	public ProjectModel(String idClient, String nameProject, String projectDescription, double projectHours,
-			double projectPrice, String clientName, String customerCity, ArrayList<Sofkiano> teamList) {
+			double projectPrice, String clientName, String customerCity, List<Sofkiano> teamList) {
 		this.idClient = idClient;
 		this.projectName = nameProject;
 		this.projectDescription = projectDescription;
@@ -55,8 +56,17 @@ public class ProjectModel implements Serializable {
 		this.clientName = clientName;
 		this.customerCity = customerCity;
 		this.teamList = teamList;
+	}
 
-		System.out.println("Probando constructor" + projectHours);
+	public ProjectModel(String nameProject, String projectDescription, double projectHours,
+						double projectPrice, String clientName, String customerCity, List<Sofkiano> teamList) {
+		this.projectName = nameProject;
+		this.projectDescription = projectDescription;
+		this.projectHours = projectHours;
+		this.projectPrice = projectPrice;
+		this.clientName = clientName;
+		this.customerCity = customerCity;
+		this.teamList = teamList;
 	}
 
 	public String getIdProject() {
@@ -115,11 +125,11 @@ public class ProjectModel implements Serializable {
 		this.idClient = idClient;
 	}
 
-	public ArrayList<Sofkiano> getListTeams() {
+	public List<Sofkiano> getListTeams() {
 		return teamList;
 	}
 
-	public void setListTeams(ArrayList<Sofkiano> teamList) {
+	public void setListTeams(List<Sofkiano> teamList) {
 		this.teamList = teamList;
 	}
 

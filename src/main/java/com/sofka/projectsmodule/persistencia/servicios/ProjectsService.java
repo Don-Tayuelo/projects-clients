@@ -13,18 +13,17 @@ import com.sofka.projectsmodule.models.ProjectModel;
 @Service
 public interface ProjectsService {
 
-	public ResponseEntity<Object> addProject(ProjectModel projectModel);
+	public ProjectModel addProject(ProjectModel projectModel);
 	
 	public List<ProjectModel> getAllProjects();
 	
 	public Optional<ProjectModel> getSingleProjectById(String _id);
 	
-	public ResponseEntity<Object> putProject(String _id, ProjectModel projectModel);
+	public boolean putProject(String _id, ProjectModel projectModel);
 	
-	public ResponseEntity<Object> deleteSingleProject(String _id);
+	public boolean deleteSingleProject(String _id);
 	
 	public ArrayList<CustomProjectsForBilling> getProjectsForBilling();
 
-	public ResponseEntity<Object> deleteAllProjects();
-	
+	public boolean deleteAllProjects();
 }
