@@ -2,6 +2,7 @@ package com.sofka.projectsmodule.controllers;
 
 import java.util.List;
 import java.util.Optional;
+<<<<<<< HEAD
 
 
 import javax.validation.ValidationException;
@@ -10,6 +11,10 @@ import javax.validation.ValidationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+=======
+
+import org.springframework.beans.factory.annotation.Autowired;
+>>>>>>> master
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -23,18 +28,26 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sofka.projectsmodule.models.ClientModel;
+<<<<<<< HEAD
 
 import com.sofka.projectsmodule.persistencia.servicios.ClientsService;
 
 
 
+=======
+import com.sofka.projectsmodule.persistencia.servicios.ClientsService;
+>>>>>>> master
 
 @CrossOrigin
 @RestController
 @RequestMapping("/clients")
 public class ClientsController {
 	
+<<<<<<< HEAD
 	@Autowired
+=======
+	@Autowired(required = true)
+>>>>>>> master
 	private ClientsService clientRepository;
 	
 	
@@ -43,6 +56,7 @@ public class ClientsController {
 		return clientRepository.getClients();
 	}
 	
+<<<<<<< HEAD
 	
 	@GetMapping("/search/{idClient}") 
 	public Optional<ClientModel> findById(@PathVariable("idClient") String idClient){ 
@@ -57,6 +71,18 @@ public class ClientsController {
 	
 
 	
+=======
+	@GetMapping("/find/{idClient}")
+    public Optional<ClientModel> findById(@PathVariable("idClient") String idClient){
+        return clientRepository.findById(idClient);
+    }
+	
+	@GetMapping("/search")
+    public List<ClientModel> findByName(@RequestParam("name") String clientName){    
+        return clientRepository.findByClientName(clientName);
+    }
+		
+>>>>>>> master
 	@PostMapping
 	public ClientModel addClient(@RequestBody ClientModel clientModel) { 
 		if (clientModel.getClientName() != null && clientModel.getProductOwner() != null && clientModel.getListProjects() != null) 	
@@ -91,7 +117,6 @@ public class ClientsController {
 		clientRepository.deleteClients();
 		return "Clientes Eliminados";
 	}
-	
 }
 	
 	

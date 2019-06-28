@@ -11,5 +11,8 @@ import com.sofka.projectsmodule.models.ClientModel;
 public interface ClientModelRepository extends MongoRepository<ClientModel, Serializable> {
 		
 	public List<ClientModel> findByClientName(String clientName);
+<<<<<<< HEAD
 	
+=======
+>>>>>>> master
 }
