@@ -86,11 +86,11 @@ public class ServicioTest {
 		
 	}
 	
-    @Test
-	public void getClientByName() {
-		
-    	
-	}
+	@Test
+    public void testEliminarTodosProducto() {
+        ClientRepository.deleteAll();
+        verify(ClientRepository,times(1)).deleteAll();
+    }
 
 	
 }
