@@ -4,10 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
 import com.sofka.projectsmodule.exceptionsHandler.excepciones.InvalidRequestBodyException;
 import com.sofka.projectsmodule.exceptionsHandler.excepciones.ProjectNotFoundException;
 import com.sofka.projectsmodule.exceptionsHandler.excepciones.ProjectsCollectionEmptyException;
@@ -17,12 +14,12 @@ import com.sofka.projectsmodule.persistencia.ProjectModelRepository;
 import com.sofka.projectsmodule.persistencia.servicios.ProjectsService;
 
 @Service
-public class ProjectsRepositoryImpl implements ProjectsService {
+public class ProjectsServiceImpl implements ProjectsService {
 
 	@Autowired
 	private ProjectModelRepository projectsRepository;
 
-	public ProjectsRepositoryImpl(ProjectModelRepository projectModelRepository) {
+	public ProjectsServiceImpl(ProjectModelRepository projectModelRepository) {
 		projectsRepository = projectModelRepository;
 	}
 

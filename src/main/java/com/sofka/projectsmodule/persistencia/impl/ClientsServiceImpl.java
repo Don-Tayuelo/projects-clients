@@ -10,13 +10,13 @@ import com.sofka.projectsmodule.persistencia.ClientModelRepository;
 import com.sofka.projectsmodule.persistencia.servicios.ClientsService;
 
 @Service
-public class ClientsRepositoryImpl implements ClientsService {
+public class ClientsServiceImpl implements ClientsService {
 
 	@Autowired
 	private  ClientModelRepository clientRepository;
 
 
-	public ClientsRepositoryImpl(ClientModelRepository repository) {
+	public ClientsServiceImpl(ClientModelRepository repository) {
 		this.clientRepository= repository;
 	}
 

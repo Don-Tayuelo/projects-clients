@@ -2,15 +2,12 @@ package com.sofka.projectsmodule.controllers;
 
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import com.sofka.projectsmodule.models.ClientModel;
 import com.sofka.projectsmodule.persistencia.servicios.ClientsService;
-
 import javax.validation.ValidationException;
 
 @CrossOrigin

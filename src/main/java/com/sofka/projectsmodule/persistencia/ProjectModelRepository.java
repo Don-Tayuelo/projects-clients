@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.sofka.projectsmodule.models.ProjectModel;
 
 @Repository
-public interface ProjectModelRepository extends MongoRepository<ProjectModel, Serializable> {}
+public interface ProjectModelRepository extends MongoRepository<ProjectModel, Serializable> {
+	
+}

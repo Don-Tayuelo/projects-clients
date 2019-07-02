@@ -9,12 +9,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.test.context.junit4.SpringRunner;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.mockito.Mockito.*;
@@ -25,7 +21,7 @@ import java.util.List;
 
 @RunWith(MockitoJUnitRunner.class)
 @SpringBootTest
-public class ProjectsRepositoryImplTest {
+public class ProjectsServiceImplTest {
 
     @Mock
     private ProjectModelRepository projectsRepository;
@@ -41,7 +37,7 @@ public class ProjectsRepositoryImplTest {
 
     @Before
     public void setup (){
-        projectsService = new ProjectsRepositoryImpl(projectsRepository);
+        projectsService = new ProjectsServiceImpl(projectsRepository);
         sofkiano = new Sofkiano();
         sofkianosList = new ArrayList<>();
     }

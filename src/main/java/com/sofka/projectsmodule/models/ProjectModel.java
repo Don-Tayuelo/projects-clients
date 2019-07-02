@@ -1,7 +1,6 @@
 package com.sofka.projectsmodule.models;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
