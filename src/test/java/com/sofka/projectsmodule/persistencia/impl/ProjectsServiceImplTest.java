@@ -14,10 +14,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.mockito.Mockito.*;
-
 import java.util.ArrayList;
 import java.util.List;
-
 
 @RunWith(MockitoJUnitRunner.class)
 @SpringBootTest
@@ -36,7 +34,7 @@ public class ProjectsServiceImplTest {
     private ArrayList<Sofkiano> sofkianosList;
 
     @Before
-    public void setup (){
+    public void setup () {
         projectsService = new ProjectsServiceImpl(projectsRepository);
         sofkiano = new Sofkiano();
         sofkianosList = new ArrayList<>();
@@ -55,6 +53,7 @@ public class ProjectsServiceImplTest {
 
     @Test
     public void addProjectTest() {
+    	sofkianosList.add(sofkiano);
         ProjectModel projectModel = new ProjectModel("Sura", "Sura", 3, 200, "Sura"
                 ,"Medellin", sofkianosList);
 
@@ -94,5 +93,12 @@ public class ProjectsServiceImplTest {
     public void deleteAllProjectsTest() {
         projectsRepository.deleteAll();
         verify(projectsRepository, times(1)).deleteAll();
+    }
+
+    @Test
+    public void getSingleProjectById() {
+        ProjectModel project = new ProjectModel();
+        project.setIdProject("123M3");
+        Assertions.assertThat(projectsRepository.findById("123M3").equals(project));
     }
 }

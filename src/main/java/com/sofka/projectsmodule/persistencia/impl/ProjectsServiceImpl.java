@@ -33,13 +33,8 @@ public class ProjectsServiceImpl implements ProjectsService {
 
 	@Override
 	public boolean putProject(String _id, ProjectModel projectModel) {
-
-		if (!projectsRepository.existsById(_id))
-			//throw new ProjectNotFoundException();
-			return false;
-		{
-			mapNewProject(_id, projectModel);
-		}
+		if (!projectsRepository.existsById(_id)) return false;
+		mapNewProject(_id, projectModel);
 		//return new ResponseEntity<>("El proyecto con id \"" + _id + "\" fue actualizado.", HttpStatus.OK);
 		return true;
 	}
@@ -54,37 +49,27 @@ public class ProjectsServiceImpl implements ProjectsService {
 			newProject.setListTeams(projectModel.getListTeams());
 			newProject.setIdClient(projectModel.getIdClient());
 			newProject.setClientName(projectModel.getClientName());
-			return projectsRepository.save(newProject);
+			return newProject;
 		});
 	}
 
 	@Override
 	public boolean deleteSingleProject(String _id) {
-		if(!projectsRepository.existsById(_id))
-			throw new ProjectNotFoundException(); 
-		{	
-			projectsRepository.deleteById(_id); 
-		}
+		if(!projectsRepository.existsById(_id)) throw new ProjectNotFoundException();
+		projectsRepository.deleteById(_id);
 		return true;
 	}
 
 	@Override
 	public ProjectModel addProject(ProjectModel projectModel) {
-		if(!validProjectBody(projectModel)) throw new InvalidRequestBodyException(); {
-			return projectsRepository.save(projectModel);
-		}
-		//return new ResponseEntity<>("Proyecto guardado con éxito.", HttpStatus.OK);
+		if(!validProjectBody(projectModel)) throw new InvalidRequestBodyException();
+		return projectsRepository.save(projectModel);
+		//return new ResponseEntity<>("Proyecto guardado con ï¿½xito.", HttpStatus.OK);
 	}
 
 	private boolean validProjectBody(ProjectModel projectModel) {
-		if(projectModel.getProjectHours() > 0) {
-			if(projectModel.getProjectPrice() > 0) {
-				if(projectModel.getListTeams().size() > 0) {
-					return true;
-				}
-			}
-		}
-		return false;
+		return (projectModel.getProjectHours() > 0 && projectModel.getProjectPrice() > 0
+				&& projectModel.getListTeams().size() > 0);
 	}
 
 	public Optional<ProjectModel> getSingleProjectById(String _id) {

@@ -35,8 +35,6 @@ public class ServicioTest {
     @Mock
     private ClientModelRepository ClientRepository;
 
-
-
     @Before
     public void setUp() {
         ClientImpService = new ClientsServiceImpl(ClientRepository);
@@ -44,7 +42,6 @@ public class ServicioTest {
         projectList = new ArrayList<>();
 
     }
-
 
     @Test
     public void amountClients() {
@@ -58,7 +55,6 @@ public class ServicioTest {
 
         assertEquals(1, ClientImpService.getClients().size());
     }
-
 
     @Test
     public void saveClients() {
