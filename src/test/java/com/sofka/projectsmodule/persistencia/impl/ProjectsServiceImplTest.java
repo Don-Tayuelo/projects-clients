@@ -9,23 +9,17 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.test.context.junit4.SpringRunner;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.mockito.Mockito.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
-
 @RunWith(MockitoJUnitRunner.class)
 @SpringBootTest
-public class ProjectsRepositoryImplTest {
+public class ProjectsServiceImplTest {
 
     @Mock
     private ProjectModelRepository projectsRepository;
@@ -40,8 +34,8 @@ public class ProjectsRepositoryImplTest {
     private ArrayList<Sofkiano> sofkianosList;
 
     @Before
-    public void setup (){
-        projectsService = new ProjectsRepositoryImpl(projectsRepository);
+    public void setup () {
+        projectsService = new ProjectsServiceImpl(projectsRepository);
         sofkiano = new Sofkiano();
         sofkianosList = new ArrayList<>();
     }
@@ -59,8 +53,12 @@ public class ProjectsRepositoryImplTest {
 
     @Test
     public void addProjectTest() {
+<<<<<<< HEAD:src/test/java/com/sofka/projectsmodule/persistencia/impl/ProjectsRepositoryImplTest.java
         Sofkiano sofkiano = new Sofkiano();
         sofkianosList.add(sofkiano);
+=======
+    	sofkianosList.add(sofkiano);
+>>>>>>> 844e838e4b29813bcf2667b517e5c5416197f3e8:src/test/java/com/sofka/projectsmodule/persistencia/impl/ProjectsServiceImplTest.java
         ProjectModel projectModel = new ProjectModel("Sura", "Sura", 3, 200, "Sura"
                 ,"Medellin", sofkianosList);
 
@@ -100,5 +98,12 @@ public class ProjectsRepositoryImplTest {
     public void deleteAllProjectsTest() {
         projectsRepository.deleteAll();
         verify(projectsRepository, times(1)).deleteAll();
+    }
+
+    @Test
+    public void getSingleProjectById() {
+        ProjectModel project = new ProjectModel();
+        project.setIdProject("123M3");
+        Assertions.assertThat(projectsRepository.findById("123M3").equals(project));
     }
 }

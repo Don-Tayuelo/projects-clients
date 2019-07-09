@@ -4,14 +4,8 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
-
 import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
-import com.sofka.projectsmodule.persistencia.impl.ClientsRepositoryImpl;
+import com.sofka.projectsmodule.persistencia.impl.ClientsServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -36,21 +30,18 @@ public class ServicioTest {
     private ArrayList<ProjectModel> projectList;
 
     @Mock
-    private ClientsRepositoryImpl ClientImpService;
+    private ClientsServiceImpl ClientImpService;
 
     @Mock
     private ClientModelRepository ClientRepository;
 
-
-
     @Before
     public void setUp() {
-        ClientImpService = new ClientsRepositoryImpl(ClientRepository);
+        ClientImpService = new ClientsServiceImpl(ClientRepository);
         project = new ProjectModel();
         projectList = new ArrayList<>();
 
     }
-
 
     @Test
     public void amountClients() {
@@ -64,7 +55,6 @@ public class ServicioTest {
 
         assertEquals(1, ClientImpService.getClients().size());
     }
-
 
     @Test
     public void saveClients() {

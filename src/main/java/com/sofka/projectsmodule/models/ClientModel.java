@@ -37,6 +37,16 @@ public class ClientModel implements Serializable{
 	public void setIdClient(String idClient) {
 		this.idClient = idClient;
 	}
+	
+	public String getClientName() {
+		return clientName;
+	}
+
+
+	public void setClientName(String clientName) {
+		this.clientName = clientName;
+	}
+
 
 	public String getProductOwner() {
 		return productOwner;
