@@ -29,8 +29,6 @@ public class ClientsController {
 		return clientRepository.findById(idClient);
 	}
 
-
-
 	@GetMapping("/search")
 	public List<ClientModel> findByName(@RequestParam("name") String clientName){
 		return clientRepository.findByClientName(clientName);

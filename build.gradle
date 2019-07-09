@@ -1,6 +1,8 @@
 plugins {
-	id 'org.springframework.boot' version '2.1.5.RELEASE'
+	id 'org.springframework.boot' version '2.1.6.RELEASE'
 	id 'java'
+	id 'jacoco'
+	id 'org.sonarqube' version '2.6.1'
 }
 
 apply plugin: 'io.spring.dependency-management'
@@ -26,4 +28,22 @@ dependencies {
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
     compile group: 'org.mongodb', name: 'mongo-java-driver', version: '3.10.2'
+}
+
+jacocoTestReport {
+	reports {
+		xml.enabled false
+		csv.enabled false
+		html.destination file("${buildDir}/jacocoHtml")
+	}
+}
+
+sonarqube {
+	properties {
+		property "sonar.projectName", "projectsmoule"
+		property "sonar.projectKey", "projectsmodule"
+		property "sonar.java.source", "1.6"
+		property "sonar.java.target", "1.6"
+		property "sonar.jacoco.reportPath", "${buildDir}/jacoco/test.exec"
+   }
 }
