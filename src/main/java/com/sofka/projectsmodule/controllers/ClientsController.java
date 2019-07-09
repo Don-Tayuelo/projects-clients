@@ -34,31 +34,43 @@ public class ClientsController {
 		return clientRepository.findByClientName(clientName);
 	}
 
-	@PostMapping
+	/*@PostMapping("/addClient")
 	public ClientModel addClient(@RequestBody ClientModel clientModel) {
 		if (clientModel.getIdClient() != null && clientModel.getProductOwner() != null && clientModel.getListProjects() != null)
 			return clientRepository.addClient(clientModel);
 		else throw new ValidationException("No se pudo crear");
+	}*/
+
+	@PostMapping("/addClient")
+	public ClientModel guardar(@RequestBody ClientModel cliente) {
+		return clientRepository.addClient(cliente);
 	}
 
-	@ExceptionHandler(ValidationException.class)
+		@ExceptionHandler(ValidationException.class)
 	ResponseEntity<String> exceptionHandler(ValidationException e){
-		return    new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+		return    new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
 	}
 
 
-	@PutMapping
+	/*@PutMapping
 	ResponseEntity<ClientModel> updateClients(@RequestBody ClientModel clientModel) {
 		if(clientRepository.findById(clientModel.getIdClient()).isPresent())
-			return  new ResponseEntity<ClientModel>(clientRepository.addClient(clientModel), HttpStatus.OK );
+			return  new ResponseEntity<>(clientRepository.addClient(clientModel), HttpStatus.OK );
 		else
-			return  new ResponseEntity<ClientModel>(clientModel, HttpStatus.BAD_REQUEST );
+			return  new ResponseEntity<>(clientModel, HttpStatus.BAD_REQUEST );
+	}*/
+
+	@PutMapping( path = "/{id}")
+	public ClientModel editar(@PathVariable("id") String _id , @RequestBody ClientModel clientModel) {
+		clientModel.setIdClient(_id);
+		return clientRepository.edit(clientModel);
 	}
+
 
 
 	@DeleteMapping("/delete/{id}")
-	public String  deleteClientById(@PathVariable("id") String _id) {
-		clientRepository.deleteClient(_id);
+	public String  deleteClientById(@PathVariable("id") String id) {
+		clientRepository.deleteClient(id);
 		return "Cliente eliminado";
 
 	}

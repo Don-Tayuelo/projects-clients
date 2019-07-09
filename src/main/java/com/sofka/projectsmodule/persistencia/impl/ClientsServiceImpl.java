@@ -31,6 +31,11 @@ public class ClientsServiceImpl implements ClientsService {
 	}
 
 	@Override
+	public ClientModel edit(ClientModel cliente) {
+		return clientRepository.save(cliente);
+	}
+
+	@Override
 	public void deleteClient(String _id) {
 		clientRepository.deleteById(_id);
 

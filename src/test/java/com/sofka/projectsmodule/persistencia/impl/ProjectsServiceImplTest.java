@@ -53,7 +53,10 @@ public class ProjectsServiceImplTest {
 
     @Test
     public void addProjectTest() {
-    	sofkianosList.add(sofkiano);
+
+        Sofkiano sofkiano = new Sofkiano();
+        sofkianosList.add(sofkiano);
+
         ProjectModel projectModel = new ProjectModel("Sura", "Sura", 3, 200, "Sura"
                 ,"Medellin", sofkianosList);
 

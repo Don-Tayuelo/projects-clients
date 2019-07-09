@@ -13,6 +13,8 @@ public interface ClientsService {
 
 	public ClientModel addClient(ClientModel cliente);
 
+	public ClientModel edit(ClientModel cliente);
+
 	public List<ClientModel> findByClientName(String clientName);
 
 	public  void deleteClient(String _id);
