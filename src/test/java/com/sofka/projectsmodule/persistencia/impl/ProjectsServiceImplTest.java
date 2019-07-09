@@ -53,12 +53,10 @@ public class ProjectsServiceImplTest {
 
     @Test
     public void addProjectTest() {
-<<<<<<< HEAD:src/test/java/com/sofka/projectsmodule/persistencia/impl/ProjectsRepositoryImplTest.java
+
         Sofkiano sofkiano = new Sofkiano();
         sofkianosList.add(sofkiano);
-=======
-    	sofkianosList.add(sofkiano);
->>>>>>> 844e838e4b29813bcf2667b517e5c5416197f3e8:src/test/java/com/sofka/projectsmodule/persistencia/impl/ProjectsServiceImplTest.java
+
         ProjectModel projectModel = new ProjectModel("Sura", "Sura", 3, 200, "Sura"
                 ,"Medellin", sofkianosList);
 
