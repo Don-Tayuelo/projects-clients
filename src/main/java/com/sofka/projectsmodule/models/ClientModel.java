@@ -21,7 +21,6 @@ public class ClientModel implements Serializable{
 
 	}
 
-
 	public ClientModel(String id, String clientName, String productOwner ,List<ProjectModel> listProjects) {
 		this.idClient = id;
 		this.clientName = clientName;

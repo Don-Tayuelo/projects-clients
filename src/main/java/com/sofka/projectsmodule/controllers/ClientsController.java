@@ -10,8 +10,9 @@ import com.sofka.projectsmodule.models.ClientModel;
 import com.sofka.projectsmodule.persistencia.servicios.ClientsService;
 import javax.validation.ValidationException;
 
-@CrossOrigin
+
 @RestController
+@CrossOrigin
 @RequestMapping("/clients")
 public class ClientsController {
 
@@ -20,45 +21,33 @@ public class ClientsController {
 
 
 	@GetMapping
-	public List<ClientModel> getClients(){
-		return clientRepository.getClients();
+	public ResponseEntity<ClientModel> getClients(){
+		return new ResponseEntity(clientRepository.getClients(),HttpStatus.OK);
+
 	}
 
 	@GetMapping("/search/{idClient}")
 	public Optional<ClientModel> findById(@PathVariable("idClient") String idClient){
-		return clientRepository.findById(idClient);
+		return  clientRepository.findById(idClient);
+
 	}
 
 	@GetMapping("/search")
 	public List<ClientModel> findByName(@RequestParam("name") String clientName){
-		return clientRepository.findByClientName(clientName);
+		return  clientRepository.findByClientName(clientName);
 	}
 
-	/*@PostMapping("/addClient")
-	public ClientModel addClient(@RequestBody ClientModel clientModel) {
-		if (clientModel.getIdClient() != null && clientModel.getProductOwner() != null && clientModel.getListProjects() != null)
-			return clientRepository.addClient(clientModel);
-		else throw new ValidationException("No se pudo crear");
-	}*/
 
 	@PostMapping("/addClient")
 	public ClientModel guardar(@RequestBody ClientModel cliente) {
 		return clientRepository.addClient(cliente);
 	}
 
-		@ExceptionHandler(ValidationException.class)
+	@ExceptionHandler(ValidationException.class)
 	ResponseEntity<String> exceptionHandler(ValidationException e){
 		return    new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
 	}
 
-
-	/*@PutMapping
-	ResponseEntity<ClientModel> updateClients(@RequestBody ClientModel clientModel) {
-		if(clientRepository.findById(clientModel.getIdClient()).isPresent())
-			return  new ResponseEntity<>(clientRepository.addClient(clientModel), HttpStatus.OK );
-		else
-			return  new ResponseEntity<>(clientModel, HttpStatus.BAD_REQUEST );
-	}*/
 
 	@PutMapping( path = "/{id}")
 	public ClientModel editar(@PathVariable("id") String _id , @RequestBody ClientModel clientModel) {
@@ -75,9 +64,11 @@ public class ClientsController {
 
 	}
 
+
 	@DeleteMapping("/delete")
 	public String  deleteAllClients() {
 		clientRepository.deleteClients();
 		return "Clientes Eliminados";
 	}
+
 }

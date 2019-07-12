@@ -16,9 +16,9 @@ public class ClientsServiceImpl implements ClientsService {
 	private  ClientModelRepository clientRepository;
 
 
-	public ClientsServiceImpl(ClientModelRepository repository) {
+	/*public ClientsServiceImpl(ClientModelRepository repository) {
 		this.clientRepository= repository;
-	}
+	}*/
 
 	@Override
 	public  List<ClientModel> getClients() {
@@ -36,8 +36,8 @@ public class ClientsServiceImpl implements ClientsService {
 	}
 
 	@Override
-	public void deleteClient(String _id) {
-		clientRepository.deleteById(_id);
+	public void deleteClient(String id) {
+		clientRepository.deleteById(id);
 
 	}
 
